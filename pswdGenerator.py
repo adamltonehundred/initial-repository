@@ -4,7 +4,7 @@ import random
 i = 1
 randPassword = ""
 
-for i in range(1,12,1):
+for i in range(0,12,1):
     charValue = random.randint(1,26)
     randChar = chr(96+int(charValue))
     randPassword = randPassword + randChar
