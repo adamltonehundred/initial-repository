@@ -30,7 +30,7 @@ def get_password():
 	    charValue = random.randint(1,26)
 	    randChar = chr(96+int(charValue))
 	    randPassword = randPassword + randChar
-	return Response(randPassword)
+	return Response("Password: " + randPassword, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
