@@ -24,7 +24,7 @@ def get_limerick_by_id(id):
 		        return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
 			idfound = True
 			break
-	if id.isdigit == False:
+	if id.isdigit() == False:
 		return Response("You're a thick cunt, type in a fucking number.", status=400)
 	elif idfound == False:
 		return Response("Very good sir.\nConsider my pants shat.", status=404)			
