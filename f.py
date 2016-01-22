@@ -17,10 +17,15 @@ def get_limerick():
 
 @app.route("/limerick/id/<int:id>")
 def get_limerick_by_id(id):
+
+	idfound = False
         for i in range(0,len(limericks["quotes"])-1):
 		if limericks["quotes"][i]["id"] == id:
 		        return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
+			idfound = True
 			break
+	if idfound == False:
+		return Response("four-oh-four", status=404)			
 
 @app.route('/fortune/random', methods=['GET'])
 def get_fortune():
