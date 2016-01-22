@@ -26,7 +26,7 @@ def get_limerick_by_id(id):
 			break
 	if id.isdigit() == False:
 		return Response("You're a thick cunt, type in a fucking number.", status=400)
-	elif idfound == False:
+	if idfound == False:
 		return Response("Very good sir.\nConsider my pants shat.", status=404)			
 
 @app.route('/fortune/random', methods=['GET'])
