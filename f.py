@@ -15,17 +15,23 @@ def get_limerick():
 	l = randint(0,len(limericks["quotes"])-1)	
  	return Response(json.dumps(limericks["quotes"][l],indent=3), mimetype='application/json')
 
-@app.route("/limerick/id/<int:id>")
+@app.route("/limerick/id/<string:id>")
 def get_limerick_by_id(id):
 
-	idfound = False
-        for i in range(0,len(limericks["quotes"])-1):
-		if limericks["quotes"][i]["id"] == id:
-		        return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
-			idfound = True
-			break
-	if idfound == False:
-		return Response("Very good sir.\nConsider my pants shat.", status=404)			
+	if id.isdigit() == False:
+		return Response("Enter a fucking number, you cunt.", status=400)
+	else:	
+
+		id = int(id)
+
+		idfound = False
+	        for i in range(0,len(limericks["quotes"])-1):
+			if limericks["quotes"][i]["id"] == id:
+			        return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
+				idfound = True
+				break
+		if idfound == False:
+			return Response("Very good sir.\nConsider my pants shat.", status=404)			
 
 @app.route('/fortune/random', methods=['GET'])
 def get_fortune():
