@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 import json
 
 from flask import Flask, Response, jsonify
@@ -14,6 +14,14 @@ fortunes = json.loads(open('fortunes.json').read())
 def get_limerick():
 	l = randint(0,len(limericks["quotes"])-1)	
  	return Response(json.dumps(limericks["quotes"][l],indent=3), mimetype='application/json')
+
+@app.route("/limerick/id/<int:id>")
+def get_fortune_by_id(id):
+        for i in range(0,len):
+		if fortunes["quotes"][c]["id"] == id:
+			l = i(limericks["quotes"])
+		        return Response(json.dumps(fortunes["quotes"][l],indent=3), mimetype='application/json')
+			break
 
 @app.route('/fortune/random', methods=['GET'])
 def get_fortune():
