@@ -18,8 +18,8 @@ def get_limerick():
 @app.route("/limerick/id/<int:id>")
 def get_limerick_by_id(id):
         for i in range(0,len(limericks["quotes"])-1):
-		if limerick["quotes"][i]["id"] == id:
-		        return Response(json.dumps(limerick["quotes"][i],indent=3), mimetype='application/json')
+		if limericks["quotes"][i]["id"] == id:
+		        return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
 			break
 
 @app.route('/fortune/random', methods=['GET'])
