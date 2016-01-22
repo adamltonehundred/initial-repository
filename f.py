@@ -31,7 +31,13 @@ def get_limerick_by_id(id):
 				idfound = True
 				break
 		if idfound == False:
-			return Response("Very good sir.\nConsider my pants shat.", status=404)			
+			return Response("Very good sir. Consider my pants shat.", status=404)			
+
+@app.route('/limerick/first10', methods=['GET'])
+def get_first10_limerick():
+	for i in range(10):
+		return Response(json.dumps(limericks["quotes"][i],indent=3), mimetype='application/json')
+		
 
 @app.route('/fortune/random', methods=['GET'])
 def get_fortune():
